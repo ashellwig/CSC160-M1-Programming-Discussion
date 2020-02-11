@@ -108,5 +108,8 @@
         "pdflatex"
       ]
     }
+  ],
+  "cSpell.words": [
+    "cout"
   ]
 }
