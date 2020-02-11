@@ -233,7 +233,8 @@
       Below is the code snippet used to create the solution to \textit{Chapter
         2`s Programming Exercise 16} \parencite[~\S2-16c]{textbook}. The snippet
         for |general_functions::pauseprompt();| is also included as an
-        alternative to |system('pause');|.
+        alternative to |system('pause');|. The source header file is attached
+        and displayed below.
 
       \begin{lstlisting}[%
         language=c++,%
@@ -256,6 +257,7 @@ using namespace std;
  *
  * \return int Exit code.
  */
+int pauseprompt(); // Prototype
 int pauseprompt() {
   std::cout << "Press enter to continue..." << '\n';
   std::cin.ignore();
@@ -276,27 +278,27 @@ int main() {
       0; // Cartons needed to hold amount of milk produced
 
   // Assigning values to variables
-  cartonMaxVolume = 3.78;
-  cartonProfit = 0.27;
+  cartonMaxVolume = 3.78000;
+  cartonProfit = 0.27000;
   literCost = 0.38;
-
-  // Multiply the cost of milk with the number of cartons for total cost.
-  totalCost = literCost * totalMilkProduced;
-
-  // Calculating total cartons produced
-  numberOfCartonsNeeded = static_cast<int>(cartonMaxVolume / totalMilkProduced);
-
-  // Calculating total profit
-  totalProfit = static_cast<double>(cartonProfit * numberOfCartonsNeeded);
 
   // Prompting user to enter amount of milk produced
   cout << "Please enter the total amount of milk produced in the morning in "
           "liters (L): ";
   cin >> totalMilkProduced;
 
+  // Multiply the cost of milk with the number of cartons for total cost.
+  totalCost = literCost * totalMilkProduced;
+
+  // Calculating total cartons produced
+  numberOfCartonsNeeded = static_cast<int>(totalMilkProduced / cartonMaxVolume);
+
+  // Calculating total profit
+  totalProfit = static_cast<double>(cartonProfit * numberOfCartonsNeeded);
+
   // Number of milk cartons needed to hold the milk
   cout << "You will need " << numberOfCartonsNeeded
-       << " to hold the milk you have produced." << '\n';
+       << " cartons to hold the milk you have produced." << '\n';
 
   // Cost of production
   cout << "Cost of producing " << totalMilkProduced << "L of milk: $"
@@ -304,7 +306,8 @@ int main() {
 
   // Profit
   cout << "Profit from producing " << totalMilkProduced << " ("
-       << numberOfCartonsNeeded << " cartons) of milk: " << totalProfit << endl;
+       << numberOfCartonsNeeded << " cartons) of milk: $" << totalProfit
+       << endl;
 
   // "Press enter to continue"
   pauseprompt(); // `system("pause")` does not work on Linux.
@@ -317,12 +320,12 @@ int main() {
       \subsubsection{Image of Compilation \& Running}
         An image is included below to show the program compiling and then
           running.
-        % \begin{figure}[H]
-        %   \centering
-        %   \caption{Chapter 2 Programming Exercise 16 Solution Image}
-        %   \label{lst:soln}
-        %   \includegraphics[width=\textwidth]{runningandcompile.png}
-        % \end{figure}
+        \begin{figure}[H]
+          \centering
+          \caption{Chapter 2 Programming Exercise 16 Solution Image}
+          \label{lst:soln}
+          \includegraphics[width=\textwidth]{compandrun.png}
+        \end{figure}
 
   % Bibliography
   \newpage
